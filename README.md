@@ -20,18 +20,18 @@ and the header name was updated to "acitivity"
 #fourth step
 train_subject and test_subject were combined to form "data_sub"
 and the header was updated to "subject"
-# fifth step
+#fifth step
 These three datasets were combined to form a complete dataset
 
-## Step II : Select columns with "mean" or "standard deviation" measurements
+##Step II : Select columns with "mean" or "standard deviation" measurements
 
 The resultant data set is called "sel_data"
 
-## Step III : replace numbers with names for all the activities
+##Step III : replace numbers with names for all the activities
 
 replaced all the numbers with the actual name of the activity e.g. 1 by walking etc.
 
-#Step IV : Appropriate labels for the data set with descriptive variable names
+##Step IV : Appropriate labels for the data set with descriptive variable names
 
 Used "gsub" to replace the short names to actual descriptive names for all the variables in the headers for all the columns.
 
@@ -39,7 +39,7 @@ Used "gsub" to replace the short names to actual descriptive names for all the v
 
 The file is called "grouped_data" and calculated the mean of each variable for each activity and each subject.
 
-This dataset called :'tidy_dataset" was written into a text file called "tody_dataset.txt"
+This dataset called :'tidy_dataset" was written into a text file called "tidy_dataset.txt"
 
 
 
