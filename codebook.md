@@ -20,4 +20,6 @@ For each set, 561 measurements were made as listed in the "features.txt".
 3) subject_train.txt includes the number 1-30 for all the subjects/volunteers
 
 # For the test set :
-The corresponding files list the same parameters for the "test" volunteers. 
+The corresponding files list the same parameters for the "test" volunteers.
+
+# Also included README.txt for more description  

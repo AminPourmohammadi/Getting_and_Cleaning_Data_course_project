@@ -25,10 +25,13 @@ colnames(data_sub)<-"subject" # change the column label
 data<-cbind(data_set,data_label,data_sub)
 final<-tbl_df(data)
 rm(data)
+## step II : select columns with "mean" or "std"
 sel_cols<-final[,grep("std|mean|activity|subject",colnames(final),ignore.case=TRUE)]  # names(final[,"requiredcolumn"])
 sel_data<-tbl_df(sel_cols)
 rm(sel_cols)
-#activity<-read.table("activity_labels.txt",stringsAsFactors = FALSE)
+
+# Step III : replace numbers with names for all the activities
+
 sel_data$activity[sel_data$activity==1]<-"WALKING"
 sel_data$activity[sel_data$activity==2]<-"WALKING_UPSTAIRS"
 sel_data$activity[sel_data$activity==3]<-"WALKING_DOWNSTAIRS"
@@ -36,7 +39,7 @@ sel_data$activity[sel_data$activity==4]<-"SITTING"
 sel_data$activity[sel_data$activity==5]<-"STANDING"
 sel_data$activity[sel_data$activity==6]<-"LAYING"
 
-# descriptive names for all the activities
+#step IV : Appropriate labels for the data set with descriptive variable names
 names(sel_data)<-gsub("^t","Time",names(sel_data))
 names(sel_data)<-gsub("-mean()","Mean",names(sel_data))
 names(sel_data)<-gsub("-std()","Standard_Deviation",names(sel_data))
@@ -48,10 +51,10 @@ names(sel_data)<-gsub("^f","Frequency",names(sel_data))
 names(sel_data)<-gsub("BodyBody","Body",names(sel_data))
 names(sel_data)<-gsub("tBody","TimeBody",names(sel_data))
 
-# group this selected group by activity and subject
-grouped_activity<-group_by(sel_data,activity, subject)
+# Step V : group this selected group by activity and subject 
+grouped_data<-group_by(sel_data,activity, subject)
 # we can use summarise_each to get the mean of every column (summarize for one or a few columns)
-tidy_dataset<-summarise_each(grouped_activity,funs(mean))
+tidy_dataset<-summarise_each(grouped_data,funs(mean))
 #saving this data to a file 
 write.table(tidy_dataset,file="tidy_dataset.txt",row.names = FALSE)
 
